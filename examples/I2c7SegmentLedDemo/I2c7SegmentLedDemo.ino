@@ -6,11 +6,11 @@
 /*
   I2c7SegmentLedDemo.ino
 
-  Written by: Gary Muhonen  gary@wht.io
+  Written by: Gary Muhonen  gary@dcity.org
 
   versions
-    1.0.0 - 3/19/2016
-      Original release.
+    1.0.0 - 7/31/2016 Original Release.
+    1.0.1 - 8/27/2018 Transfer to GM, and some minor changes
 
   Short Description:
     These files provide software for Arduino and Particle (Photon, Electron, and Core)
@@ -25,21 +25,20 @@
     See the links below for installation and usage information.
 
     Project Details:
-    * Library installation and usage:                  http://wht.io/portfolio/i2c-7-segment-led-library/
-    * .8 inch,  7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot36inch
+    * Library installation and usage:                  https://dcity.org/portfolio/i2c-7-segment-led-library/
+    * .8 inch,  7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
+    * .56 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
+    * .36 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
 
     Software Github repositories (library and demo programs):
-    * Arduino library files:      https://github.com/wht-io/i2c-7-segment-led-library-arduino.git
-    * Particle library files:     https://github.com/wht-io/i2c-7-segment-led-library-particle.git
-    * Raspberry Pi library files: https://github.com/wht-io/i2c-7-segment-led-library-raspberrypi.git
+    * Arduino library files:      https://github.com/dcityorg/i2c-7-segment-led-library-arduino.git
+    * Particle library files:     https://github.com/dcityorg/i2c-7-segment-led-library-particle.git
+    * Raspberry Pi library files: https://github.com/dcityorg/i2c-7-segment-led-library-raspberrypi.git
 
     Hardware Design Github repositories (schematic and board layouts):
-    * .8 inch,  7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot36inch
-
+    * .8 inch,  7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
+    * .56 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
+    * .36 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
 */
 
 /*
@@ -48,14 +47,24 @@
 */
 
 
+// include files... some boards require different include files
 #ifdef ARDUINO_ARCH_AVR         // if using an arduino
-#include <I2c7SegmentLed.h>
-#include <Wire.h>
-#elif SPARK                     // if using a core, photon, or electron (by particle.io)
+#include "Arduino.h"
+#include "Wire.h"
+#elif ARDUINO_ARCH_SAM        // if using an arduino DUE
+#include "Arduino.h"
+#include "Wire.h"
+#elif PARTICLE                     // if using a core, photon, or electron (by particle.io)
 #include "I2c7SegmentLed/I2c7SegmentLed.h"  // use this if the library files are in the particle repository of libraries
 //#include "I2c7SegmentLed.h"     // use this if the library files are in the same folder as this demo program
-#else                           // if using something else
+#elif defined(__MK20DX128__) || (__MK20DX256__) || (__MK20DX256__) || (__MK62FX512__) || (__MK66FX1M0__) // if using a teensy 3.0, 3.1, 3.2, 3.5, 3.6
+#include "Arduino.h"
+#include "Wire.h"
+#else                           // if using something else then this may work
+#include "Arduino.h"
+#include "Wire.h"
 #endif
+
 
 #define LEDADDRESS     0x03                    // i2c address for the led display
 

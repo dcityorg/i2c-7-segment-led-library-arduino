@@ -1,4 +1,4 @@
-// 1. need to figure out how to get the const LedSegments into program memory, not ram memory !!!!!!!!
+// 1. need to get the const LedSegments into program memory, not ram memory !!!!!!!!
 
 
 
@@ -10,11 +10,11 @@
 /*
   I2c7SegmentLed.cpp
 
-  Written by: Gary Muhonen  gary@wht.io
+  Written by: Gary Muhonen  gary@dcity.org
 
   versions
-    1.0.0 - 7/31/2016
-      Original Release.
+    1.0.0 - 7/31/2016 Original Release.
+    1.0.1 - 8/27/2018 Transfer to GM, and some minor changes
 
   Short Description:
     These files provide software for Arduino and Particle (Photon, Electron, and Core)
@@ -29,54 +29,38 @@
     See the links below for installation and usage information.
 
     Project Details:
-    * Library installation and usage:                  http://wht.io/portfolio/i2c-7-segment-led-library/
-    * .8 inch,  7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module hardware information: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot36inch
+    * Library installation and usage:                  https://dcity.org/portfolio/i2c-7-segment-led-library/
+    * .8 inch,  7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
+    * .56 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
+    * .36 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
 
     Software Github repositories (library and demo programs):
-    * Arduino library files:      https://github.com/wht-io/i2c-7-segment-led-library-arduino.git
-    * Particle library files:     https://github.com/wht-io/i2c-7-segment-led-library-particle.git
-    * Raspberry Pi library files: https://github.com/wht-io/i2c-7-segment-led-library-raspberrypi.git
+    * Arduino library files:      https://github.com/dcityorg/i2c-7-segment-led-library-arduino.git
+    * Particle library files:     https://github.com/dcityorg/i2c-7-segment-led-library-particle.git
+    * Raspberry Pi library files: https://github.com/dcityorg/i2c-7-segment-led-library-raspberrypi.git
 
     Hardware Design Github repositories (schematic and board layouts):
-    * .8 inch,  7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module design: http://wht.io/portfolio/i2c-7-segment-led-backpack-dot36inch
+    * .8 inch,  7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
+    * .56 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
+    * .36 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
 */
 
 /*
-  Windy Hill Technology LLC code, firmware, and software is released under the
-  MIT License (http://opensource.org/licenses/MIT).
-
-  The MIT License (MIT)
-
-  Copyright (c) 2016 Windy Hill Technology LLC
-
-  Permission is hereby granted, free of charge, to any person obtaining a
-  copy of this software and associated documentation files (the "Software"),
-  to deal in the Software without restriction, including without limitation
-  the rights to use, copy, modify, merge, publish, distribute, sublicense,
-  and/or sell copies of the Software, and to permit persons to whom the
-  Software is furnished to do so, subject to the following conditions:
-  The above copyright notice and this permission notice shall be included
-  in all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-  DEALINGS IN THE SOFTWARE.
+License Information
+Our License Information is here: https://www.dcity.org/license-information/.
 */
 
-
+// include files... some boards require different include files
 #ifdef ARDUINO_ARCH_AVR        // if using an arduino
-#include "I2c7SegmentLed.h"
-#elif SPARK                    // if using a core, photon, or electron (by particle.io)
-#include "I2c7SegmentLed.h"
-#else                          // if using something else
+#include "I2cCharDisplay.h"
+#elif ARDUINO_ARCH_SAM         // if using a arduino DUE
+#include "I2cCharDisplay.h"
+#elif PARTICLE                 // if using a core, photon, or electron (by particle.io)
+#include "I2cCharDisplay.h"
+#elif defined(__MK20DX128__) || (__MK20DX256__) || (__MK20DX256__) || (__MK62FX512__) || (__MK66FX1M0__) // if using a teensy 3.0, 3.1, 3.2, 3.5, 3.6
+#include "I2cCharDisplay.h"
+#else                          // if using something else then this may work
+#include "I2cCharDisplay.h"
 #endif
 
 
