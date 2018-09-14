@@ -1,7 +1,3 @@
-/*
-  Important NOTES:
-    1. If using Arduino IDE, version 1.5.0 or higher is REQUIRED!
-*/
 
 /*
   I2c7SegmentLed.h
@@ -12,38 +8,35 @@
     1.0.0 - 7/31/2016 Original Release.
     1.0.1 - 8/27/2018 Transfer to GM, and some minor changes
 
-  Short Description:
-    These files provide software for Arduino and Particle (Photon, Electron, and Core)
-    microcontroller boards.  The library files provide useful functions to make it easy
-    to communicate with 7 Segment LED display modules that use the AMS AS1115
-    LED controller chip. This chip uses the I2C communication protocol. The demo
-    program shows the usage of the functions in the library.
+    Short Description:
 
-    The library files and demo will work with 7 segment LED displays with up to
-    8 digits. The LED display must use the AMS AS1115 controller chip.
+        These files provide a software library and demo program for the Arduino and Particle
+        microcontroller boards.
 
-    See the links below for installation and usage information.
+        The library files provide useful functions to make it easy
+        to communicate with 7 Segment LEDs
+        that use the I2C communication protocol. The demo
+        program shows the usage of the functions in the library.
 
-    Project Details:
-    * Library installation and usage:                  https://dcity.org/portfolio/i2c-7-segment-led-library/
-    * .8 inch,  7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module hardware information: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
+        The 7 Segment LED must connect to the I2C bus using a AMS AS1115 controller chip.
+        A backback board with the AMS AS1115 chip is available and details are in the link below.
 
-    Software Github repositories (library and demo programs):
-    * Arduino library files:      https://github.com/dcityorg/i2c-7-segment-led-library-arduino.git
-    * Particle library files:     https://github.com/dcityorg/i2c-7-segment-led-library-particle.git
-    * Raspberry Pi library files: https://github.com/dcityorg/i2c-7-segment-led-library-raspberrypi.git
+    https://www.dcity.org/portfolio/i2c-7-segment-led-library/
+    This link has details including:
+        * software library installation for use with Arduino, Particle and Raspberry Pi boards
+        * list of functions available in these libraries
+        * a demo program (which shows the usage of most library functions)
+        * info on 7 segment LED displays that work with this software
+        * hardware design for a backpack board for 7 segment LEDs, available on github
+        * info on backpack “bare” pc boards available from OSH Park.
 
-    Hardware Design Github repositories (schematic and board layouts):
-    * .8 inch,  7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot8inch
-    * .56 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot56inch
-    * .36 inch, 7 Segment module design: https://dcity.org/portfolio/i2c-7-segment-led-backpack-dot36inch
-*/
 
-/*
-License Information
-Our License Information is here: https://www.dcity.org/license-information/.
+    License Information:  https://www.dcity.org/license-information/
+
+
+    NOTES:
+      1. If using Arduino IDE, version 1.5.0 or higher is REQUIRED!
+
 */
 
 
@@ -55,7 +48,7 @@ Our License Information is here: https://www.dcity.org/license-information/.
 #include "Arduino.h"
 #include "Wire.h"
 #elif PARTICLE                 // if using a core, photon, or electron (by particle.io)
-#include "application.h"
+#include "Particle.h"
 #elif defined(__MK20DX128__) || (__MK20DX256__) || (__MK20DX256__) || (__MK62FX512__) || (__MK66FX1M0__) // if using a teensy 3.0, 3.1, 3.2, 3.5, 3.6
 #include "Arduino.h"
 #include "Wire.h"
