@@ -2,13 +2,13 @@
 
 <div style="text-align: center;">
 <div style="display: inline-block; margin-right: 5px;">
-<img  src="https://www.dcity.org/dcity/wp-content/uploads/projects/i2c-7-segment-led-dot56inch/i2c-7-segment-led-dot56inch-seeeduino.jpg" alt="i2c LED display" width="300" height="300" />
+<a href="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-with-seeeduino.jpg"><img src="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-with-seeeduino-600x400.jpg" alt="" width="300" height="200" class="alignnone size-medium wp-image-517" /></a>
 </div>
 <div style="display: inline-block; margin-right: 5px;">
-<img  src="https://www.dcity.org/dcity/wp-content/uploads/projects/i2c-7-segment-led-dot56inch/i2c-7-segment-led-dot56inch-front.jpg" alt="i2c LED display" width="300" height="300" />
+<a href="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-front.jpg"><img src="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-front-600x400.jpg" alt="" width="300" height="200" class="alignnone size-medium wp-image-517" /></a>
 </div>
 <div style="display: inline-block; margin-right: 5px;">
-<img  src="https://www.dcity.org/dcity/wp-content/uploads/projects/i2c-7-segment-led-dot56inch/i2c-7-segment-led-dot56inch-back.jpg" alt="i2c LED display" width="300" height="300" />
+<a href="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-back.jpg"><img src="https://www.dcity.org/dcity/wp-content/uploads/i2c-7-seg-led-dot56inch-back-600x400.jpg" alt="" width="300" height="200" class="alignnone size-medium wp-image-517" /></a>
 </div>
 </div>
 
